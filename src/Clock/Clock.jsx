@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import styled from "styled-components";
+var moment = require("moment");
+moment().format();
+
 class Clock extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +13,6 @@ class Clock extends Component {
       minutes: 0,
       seconds: 0
     };
-    // console.log("this.props", this.props);
   }
 
   componentDidMount() {
@@ -18,11 +21,7 @@ class Clock extends Component {
   }
 
   leadingZero(num) {
-    if (num < 10) {
-      return "0" + num;
-    } else {
-      return num;
-    }
+    return num < 10 ? "0" + num : num;
   }
 
   getTimeUntil(deadline) {
@@ -44,14 +43,18 @@ class Clock extends Component {
   render() {
     // console.log(this.state);
     return (
-      <div>
+      <ClockWrapper>
         <div>{this.leadingZero(this.state.days)} days</div>
         <div>{this.leadingZero(this.state.hours)} hours</div>
         <div>{this.leadingZero(this.state.minutes)} minutes</div>
         <div>{this.leadingZero(this.state.seconds)} seconds</div>
-      </div>
+      </ClockWrapper>
     );
   }
 }
 
+const ClockWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export default Clock;

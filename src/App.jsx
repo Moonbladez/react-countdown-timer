@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Clock from "./Clock/Clock";
-import "./styles.css";
 import styled from "styled-components";
+import "./styles.css";
+import moment from "moment";
 
 class App extends Component {
   constructor(props) {
@@ -22,38 +23,44 @@ class App extends Component {
 
   render() {
     return (
-      <TimerWrapper>
+      <TimeWrapper className="App">
         <h1>Countdown Timer</h1>
-        <h2>{this.state.deadline}</h2>
+        <h2>{moment(this.state.deadline).format("DD MMMM YYYY")}</h2>
         <Clock deadline={this.state.deadline} />
         <input
-          type="text"
+          type="date"
           placeholder="new date"
           onChange={event => {
             this.setState({ newDeadline: event.target.value });
           }}
         />
-        <button type="submit" onClick={() => this.handleClick()}>
+        <Button type="submit" onClick={() => this.handleClick()}>
           Submit
-        </button>
-      </TimerWrapper>
+        </Button>
+      </TimeWrapper>
     );
   }
 }
-const TimerWrapper = styled.section`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+const TimeWrapper = styled.section`
   text-align: center;
-  max-width: 90%;
-  margin: auto;
-  color: #333333;
-  h1 {
-    font-size: 3rem;
-  }
 
   input {
-    padding: 0.5rem;
+    padding: 0.5em;
+    margin: 0.5em;
+    background: papayawhip;
+    border: none;
+    border-radius: 3px;
   }
+`;
+
+const Button = styled.button`
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `;
 
 export default App;
