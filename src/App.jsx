@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Clock from "./Clock/Clock";
 import "./styles.css";
+import styled from "styled-components";
 
 class App extends Component {
   constructor(props) {
@@ -21,10 +22,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <TimerWrapper>
         <h1>Countdown Timer</h1>
         <h2>{this.state.deadline}</h2>
-        <Clock />
+        <Clock deadline={this.state.deadline} />
         <input
           type="text"
           placeholder="new date"
@@ -35,9 +36,19 @@ class App extends Component {
         <button type="submit" onClick={() => this.handleClick()}>
           Submit
         </button>
-      </div>
+      </TimerWrapper>
     );
   }
 }
+const TimerWrapper = styled.section`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: center;
+  max-width: 80%;
+  margin: auto;
+  h1 {
+    font-size: 3rem;
+  }
+`;
 
 export default App;
