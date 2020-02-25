@@ -44,10 +44,15 @@ const TimerWrapper = styled.section`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   text-align: center;
-  max-width: 80%;
+  max-width: 90%;
   margin: auto;
+  color: #333333;
   h1 {
     font-size: 3rem;
+  }
+
+  input {
+    padding: 0.5rem;
   }
 `;
 
